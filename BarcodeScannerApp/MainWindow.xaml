@@ -1,12 +1,23 @@
-﻿<Window x:Class="BarcodeScannerApp.MainWindow"
+﻿<Window x:Class="BarcodeScannerWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BarcodeScannerApp"
+        xmlns:local="clr-namespace:BarcodeScannerWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="153*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="image" Grid.Row="0" Margin="0,10,0,0"/>
+        <Button x:Name="addImageBtn" Grid.Row="1" Click="addImageBtn_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="44" Width="113" Background="LightBlue">Select Picture</Button>
+        <Label Grid.Row="2" Name="serialNumberLabel" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center">The number coded in the barcode is:</Label>
+        <TextBlock Grid.Row="2" Text="{Binding SerialNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
     </Grid>
 </Window>
