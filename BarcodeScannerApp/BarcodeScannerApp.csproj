@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Spire.Barcode" Version="4.9.2" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,8 @@
-﻿using BarcodeScannerWPF.Model;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using Spire.Barcode;
 
 namespace BarcodeScannerWPF
 {
@@ -11,12 +11,9 @@ namespace BarcodeScannerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BarcodeData _barcodeData = new BarcodeData { SerialNumber = 0000000000 };
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = _barcodeData;
-            image.Source = new BitmapImage(new Uri(@"/input/gazora.jpg", UriKind.Relative));
         }
 
         private void addImageBtn_Click(object sender, RoutedEventArgs e)
@@ -26,7 +23,10 @@ namespace BarcodeScannerWPF
             if (openFileDialog.ShowDialog() == true)
             {
                 var uri = new Uri(openFileDialog.FileName);
-                image.Source = new BitmapImage(uri);
+                var picture = new BitmapImage(uri);
+                image.Source = picture;
+                var datas = BarcodeScanner.Scan(uri.AbsolutePath);
+               serialNumberText.Text = datas[0];
             }
         }
     }
