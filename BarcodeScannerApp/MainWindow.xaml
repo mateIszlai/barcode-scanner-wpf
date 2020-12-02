@@ -8,17 +8,21 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="309*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="153*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
+            <RowDefinition Height="257*"/>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="56*"/>
         </Grid.RowDefinitions>
         <Image x:Name="image" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
-        <Button x:Name="addImageBtn" Grid.Row="1" Grid.ColumnSpan="2" Click="addImageBtn_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="44" Width="114" Background="LightBlue">Select Picture</Button>
-        <Label Grid.Row="2" Grid.Column="0" Name="serialNumberLabel" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Height="36" Width="334">The number coded in the barcode is:</Label>
-        <TextBlock Grid.Row="2" Grid.Column="1" Name="serialNumberText" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Text="00000000000"/>
+        <Button x:Name="addImageBtn" Grid.Row="1" Click="addImageBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Height="44" Width="114" Background="LightBlue" Margin="162,0,0,0" Grid.Column="1">Select Picture</Button>
+        <Label Grid.Row="2" Name="asposeLabel" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Width="174">Aspose detection:</Label>
+        <TextBlock Grid.Row="2" Grid.Column="1" Name="asposeNumberText" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Text="00000000000" Height="26"/>
+        <Label Grid.Row="3" Grid.Column="0" Name="spireLabel" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Height="36" Width="168" Margin="10,0,0,0">Spire detection:</Label>
+        <TextBlock Grid.Row="3" Grid.Column="1" Name="spireNumberText" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Text="00000000000" Height="26"/>
+
     </Grid>
 </Window>
