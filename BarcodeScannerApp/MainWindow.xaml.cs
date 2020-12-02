@@ -4,6 +4,7 @@ using Spire.Barcode;
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
+//using ZXing;
 
 namespace BarcodeScannerWPF
 {
@@ -28,7 +29,13 @@ namespace BarcodeScannerWPF
                 var uri = new Uri(openFileDialog.FileName);
                 var picture = new BitmapImage(uri);
                 image.Source = picture;
-                
+
+
+                /* ZXing.Net - opensource, nem sikerült működésre bírnom, a result mindig null, mintha nem ismerne fel egy barcodeot sem
+
+                BarcodeReader barcodeReader = new BarcodeReader();
+                var zxingResult = barcodeReader.Decode(picture);
+                */
 
                 //Aspose Barcode reader - Fizetős, de jól működött nálam, az evaluation verziót próbáltam
                
@@ -49,6 +56,7 @@ namespace BarcodeScannerWPF
                         asposeNumberText.Text = "No barcode found";
                 }
                 
+                //Spire Barcode - Elérhető ingyenes verzió is belőle, de nem tudom, hogy ez e az, szóval lehet, hogy ingyenes. Az aspose egy helyen jobban teljesített nálam, meg gyorsabb is volt. 
 
                 var spireResult = BarcodeScanner.ScanOne(openFileDialog.FileName);
                 if (spireResult.Length > 0)
