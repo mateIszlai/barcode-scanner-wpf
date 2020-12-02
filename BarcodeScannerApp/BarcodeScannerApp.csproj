@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Aspose.BarCode" Version="20.11.0" />
     <PackageReference Include="Spire.Barcode" Version="4.9.2" />
+    <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>
 
 </Project>
