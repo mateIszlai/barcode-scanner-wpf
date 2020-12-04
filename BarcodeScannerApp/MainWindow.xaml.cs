@@ -38,7 +38,7 @@ namespace BarcodeScannerWPF
                 */
 
                 //Aspose Barcode reader - Fizetős, de jól működött nálam, az evaluation verziót próbáltam
-               
+
                 using (BarCodeReader reader = new BarCodeReader(openFileDialog.FileName))
                 {
                     var asposeResult = reader.ReadBarCodes();
@@ -55,7 +55,8 @@ namespace BarcodeScannerWPF
                     else
                         asposeNumberText.Text = "No barcode found";
                 }
-                
+
+
                 //Spire Barcode - Elérhető ingyenes verzió is belőle, de nem tudom, hogy ez e az, szóval lehet, hogy ingyenes. Az aspose egy helyen jobban teljesített nálam, meg gyorsabb is volt. 
 
                 var spireResult = BarcodeScanner.ScanOne(openFileDialog.FileName);
@@ -63,6 +64,7 @@ namespace BarcodeScannerWPF
                     spireNumberText.Text = spireResult;
                 else
                     spireNumberText.Text = "No barcode found";
+                
             }
         }
     }
