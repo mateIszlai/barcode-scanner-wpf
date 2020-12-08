@@ -1,4 +1,5 @@
 ﻿using BarcodeScannerApp.Models.Readers;
+using Leadtools;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace BarcodeScannerWPF
             InitializeComponent();
 
             resultList.ItemsSource = _results;
+            RasterSupport.SetLicense("eval-license-files.lic", "x8wVXpNT1ZaRbXTDSNFAk5KRXsAXLgAI5d3u3qtp7DM=");
         }
 
         private void addImageBtn_Click(object sender, RoutedEventArgs e)
@@ -60,6 +62,9 @@ namespace BarcodeScannerWPF
                         break;
                     case "ZXing":
                         _results.Add(ZXingReader.DecodeBarcode(_imagePath));
+                        break;
+                    case "Leadtools":
+                        _results.Add(LeadtoolsReader.DecodeBarcode(_imagePath));
                         break;
                 }
             }
