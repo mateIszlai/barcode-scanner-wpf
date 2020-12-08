@@ -65,6 +65,9 @@ namespace BarcodeScannerWPF
                     case "Spire":
                         _results.Add(SpireReader.DecodeBarcode(_imagePath));
                         break;
+                    case "ByteScout":
+                        _results.Add(ByteScoutReader.DecodeBarcode(_imagePath));
+                        break;
                 }
             }
         }
