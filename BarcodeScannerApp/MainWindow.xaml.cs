@@ -1,12 +1,8 @@
-﻿using Aspose.BarCode.BarCodeRecognition;
-using BarcodeScannerApp.Models;
-using BarcodeScannerApp.Models.Readers;
+﻿using BarcodeScannerApp.Models.Readers;
 using Microsoft.Win32;
-using Spire.Barcode;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -68,6 +64,10 @@ namespace BarcodeScannerWPF
                     case "ByteScout":
                         _results.Add(ByteScoutReader.DecodeBarcode(_imagePath));
                         break;
+                    case "BarCode":
+                        _results.Add(IronReader.DecodeBarcode(_imagePath));
+                        break;
+                        
                 }
             }
         }
