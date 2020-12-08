@@ -1,8 +1,14 @@
 ﻿using Aspose.BarCode.BarCodeRecognition;
+using BarcodeScannerApp.Models;
+using BarcodeScannerApp.Models.Readers;
 using Microsoft.Win32;
 using Spire.Barcode;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 //using ZXing;
 
@@ -13,9 +19,15 @@ namespace BarcodeScannerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly HashSet<string> _libraries = new HashSet<string>();
+        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
+        private string _imagePath;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            resultList.ItemsSource = _results;
         }
 
         private void addImageBtn_Click(object sender, RoutedEventArgs e)
@@ -27,45 +39,44 @@ namespace BarcodeScannerWPF
             if (openFileDialog.ShowDialog() == true)
             {
                 var uri = new Uri(openFileDialog.FileName);
+                _imagePath = openFileDialog.FileName;
                 var picture = new BitmapImage(uri);
                 image.Source = picture;
-
+                decodeBtn.IsEnabled = true;
 
                 /* ZXing.Net - opensource, nem sikerült működésre bírnom, a result mindig null, mintha nem ismerne fel egy barcodeot sem
 
                 BarcodeReader barcodeReader = new BarcodeReader();
                 var zxingResult = barcodeReader.Decode(picture);
                 */
-
-                //Aspose Barcode reader - Fizetős, de jól működött nálam, az evaluation verziót próbáltam
-
-                using (BarCodeReader reader = new BarCodeReader(openFileDialog.FileName))
-                {
-                    var asposeResult = reader.ReadBarCodes();
-                    if (asposeResult.Length > 0)
-                    {
-                        var number = asposeResult[0].CodeText;
-                        if (number.Length > 10)
-                            asposeNumberText.Text = number.Substring(0, 10);
-                        else
-                            asposeNumberText.Text = number;
-
-                    }
-                        
-                    else
-                        asposeNumberText.Text = "No barcode found";
-                }
-
-
-                //Spire Barcode - Elérhető ingyenes verzió is belőle, de nem tudom, hogy ez e az, szóval lehet, hogy ingyenes. Az aspose egy helyen jobban teljesített nálam, meg gyorsabb is volt. 
-
-                var spireResult = BarcodeScanner.ScanOne(openFileDialog.FileName);
-                if (spireResult.Length > 0)
-                    spireNumberText.Text = spireResult;
-                else
-                    spireNumberText.Text = "No barcode found";
-                
             }
+        }
+
+        private void decodeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _results.Clear();
+            foreach (var name in _libraries)
+            {
+                switch (name)
+                {
+                    case "Aspose":
+                        _results.Add(AsposeReader.DecodeBarcode(_imagePath));
+                        break;
+                    case "Spire":
+                        _results.Add(SpireReader.DecodeBarcode(_imagePath));
+                        break;
+                }
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            _libraries.Add(((TextBlock)((CheckBox)sender).Content).Text);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _libraries.Remove(((TextBlock)((CheckBox)sender).Content).Text);
         }
     }
 }
