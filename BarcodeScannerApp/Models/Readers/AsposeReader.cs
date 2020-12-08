@@ -17,7 +17,7 @@ namespace BarcodeScannerApp.Models.Readers
                     if (number.Length > 10)
                         return result + number.Substring(0, 10);
 
-                    return number;
+                    return result + number;
                 }
 
                 return result + "No barcode found";

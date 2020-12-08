@@ -39,12 +39,6 @@ namespace BarcodeScannerWPF
                 var picture = new BitmapImage(uri);
                 image.Source = picture;
                 decodeBtn.IsEnabled = true;
-
-                /* ZXing.Net - opensource, nem sikerült működésre bírnom, a result mindig null, mintha nem ismerne fel egy barcodeot sem
-
-                BarcodeReader barcodeReader = new BarcodeReader();
-                var zxingResult = barcodeReader.Decode(picture);
-                */
             }
         }
 
@@ -64,10 +58,9 @@ namespace BarcodeScannerWPF
                     case "ByteScout":
                         _results.Add(ByteScoutReader.DecodeBarcode(_imagePath));
                         break;
-                    case "BarCode":
-                        _results.Add(IronReader.DecodeBarcode(_imagePath));
+                    case "ZXing":
+                        _results.Add(ZXingReader.DecodeBarcode(_imagePath));
                         break;
-                        
                 }
             }
         }

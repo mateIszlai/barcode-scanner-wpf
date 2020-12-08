@@ -20,9 +20,6 @@
         <Image x:Name="image" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0"/>
         <Button x:Name="addImageBtn" Grid.Row="1" Click="addImageBtn_Click" VerticalAlignment="Center" Height="44" Background="LightBlue" Grid.Column="1" Margin="140,0,478,0"  >Select Picture</Button>
         <Button x:Name="decodeBtn" Grid.Row="1" Click="decodeBtn_Click" IsEnabled="False" VerticalAlignment="Center" Height="44" Background="LightBlue" Grid.Column="1" Margin="309,0,309,0">Decode</Button>
-        <CheckBox Grid.Row="2" Grid.Column="1" x:Name="barCodeCheckBox" IsChecked="False" Width="80" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="10,0,0,0" >
-            <TextBlock Text="BarCode" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        </CheckBox>
         <CheckBox Grid.Row="2" Grid.Column="1" x:Name="asposeCheckBox" IsChecked="False" Width="80" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="100,0,0,0" >
             <TextBlock Text="Aspose" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </CheckBox>
