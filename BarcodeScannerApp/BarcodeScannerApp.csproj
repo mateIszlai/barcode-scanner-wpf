@@ -9,8 +9,10 @@
   <ItemGroup>
     <PackageReference Include="Aspose.BarCode" Version="20.11.0" />
     <PackageReference Include="Bytescout.BarCode.Reader" Version="11.3.0.2004" />
+    <PackageReference Include="Dynamsoft.NetCoreApp.Barcode" Version="7.6.0" />
     <PackageReference Include="Leadtools.Barcode" Version="21.0.0.2" />
     <PackageReference Include="Spire.Barcode" Version="4.9.2" />
+    <PackageReference Include="Vintasoft.Barcode" Version="12.4.1.1" />
     <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>
 

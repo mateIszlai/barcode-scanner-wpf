@@ -26,6 +26,7 @@ namespace BarcodeScannerWPF
 
             resultList.ItemsSource = _results;
             RasterSupport.SetLicense("eval-license-files.lic", "x8wVXpNT1ZaRbXTDSNFAk5KRXsAXLgAI5d3u3qtp7DM=");
+            VintasoftReader.SetUp();
         }
 
         private void addImageBtn_Click(object sender, RoutedEventArgs e)
@@ -65,6 +66,14 @@ namespace BarcodeScannerWPF
                         break;
                     case "Leadtools":
                         _results.Add(LeadtoolsReader.DecodeBarcode(_imagePath));
+                        break;
+                    case "Dynamsoft":
+                        _results.Add(DynamsoftReader.DecodeBarcode(_imagePath));
+                        break;
+                    case "Vintasoft":
+                        _results.Add(VintasoftReader.DecodeBarcode(_imagePath));
+                        break;
+                    default:
                         break;
                 }
             }

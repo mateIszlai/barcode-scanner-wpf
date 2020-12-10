@@ -35,6 +35,12 @@
         <CheckBox Grid.Row="2" Grid.Column="1" x:Name="byteScoutCheckBox" IsChecked="False" Width="80" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="370,0,0,0" >
             <TextBlock Text="ByteScout" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </CheckBox>
+        <CheckBox Grid.Row="2" Grid.Column="1" x:Name="dynamsoftCheckBox" IsChecked="False" Width="80" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="460,0,0,0" >
+            <TextBlock Text="Dynamsoft" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </CheckBox>
+        <CheckBox Grid.Row="2" Grid.Column="1" x:Name="vintasoftCheckBox" IsChecked="False" Width="80" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="550,0,0,0" >
+            <TextBlock Text="Vintasoft" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </CheckBox>
         <ItemsControl x:Name="resultList" Grid.Row="3" Grid.ColumnSpan="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
