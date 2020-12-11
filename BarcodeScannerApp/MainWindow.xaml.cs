@@ -7,7 +7,6 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-//using ZXing;
 
 namespace BarcodeScannerWPF
 {
@@ -72,6 +71,9 @@ namespace BarcodeScannerWPF
                         break;
                     case "Vintasoft":
                         _results.Add(VintasoftReader.DecodeBarcode(_imagePath));
+                        break;
+                    case "Accusoft":
+                        _results.Add(AccusoftReader.DecodeBarcode(_imagePath));
                         break;
                     default:
                         break;
