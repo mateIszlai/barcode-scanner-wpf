@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Accusoft.BarcodeXpress.NetCore" Version="13.3.1665" />
     <PackageReference Include="Aspose.BarCode" Version="20.11.0" />
     <PackageReference Include="Bytescout.BarCode.Reader" Version="11.3.0.2004" />
     <PackageReference Include="Dynamsoft.NetCoreApp.Barcode" Version="7.6.0" />
