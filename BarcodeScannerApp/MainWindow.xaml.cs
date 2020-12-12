@@ -22,7 +22,6 @@ namespace BarcodeScannerWPF
         public MainWindow()
         {
             InitializeComponent();
-
             resultList.ItemsSource = _results;
             RasterSupport.SetLicense("eval-license-files.lic", "x8wVXpNT1ZaRbXTDSNFAk5KRXsAXLgAI5d3u3qtp7DM=");
             VintasoftReader.SetUp();
