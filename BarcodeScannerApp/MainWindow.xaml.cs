@@ -23,7 +23,34 @@ namespace BarcodeScannerWPF
         {
             InitializeComponent();
             resultList.ItemsSource = _results;
-            RasterSupport.SetLicense("eval-license-files.lic", "x8wVXpNT1ZaRbXTDSNFAk5KRXsAXLgAI5d3u3qtp7DM=");
+            var licfileCorrect = false;
+            try
+            {
+                RasterSupport.SetLicense("eval-license-files.lic", "x8wVXpNT1ZaRbXTDSNFAk5KRXsAXLgAI5d3u3qtp7DM=");
+                licfileCorrect = true;
+            }
+            catch (RasterException)
+            {
+                MessageBox.Show("Please open the leadtools licence file");
+                while (!licfileCorrect)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        try
+                        {
+                            RasterSupport.SetLicense(openFileDialog.FileName, "x8wVXpNT1ZaRbXTDSNFAk5KRXsAXLgAI5d3u3qtp7DM=");
+                            licfileCorrect = true;
+                        }
+                        catch (RasterException)
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            
             VintasoftReader.SetUp();
         }
 
