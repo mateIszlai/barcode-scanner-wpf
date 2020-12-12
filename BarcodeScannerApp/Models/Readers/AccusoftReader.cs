@@ -12,7 +12,12 @@ namespace BarcodeScannerApp.Models.Readers
             using Bitmap image = new Bitmap(path);
             var results = barcodeXpress.reader.Analyze(image);
             if (results.Length > 0)
-                return type + results[0].BarcodeValue;
+            {
+                var number = results[0].BarcodeValue;
+                if (number.Length > 10)
+                    return type + number.Substring(0, 10);
+                return type + number;
+            }
             return type + "No barcode found";
         }
 

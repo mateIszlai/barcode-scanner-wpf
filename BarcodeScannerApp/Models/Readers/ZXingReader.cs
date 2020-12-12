@@ -15,6 +15,8 @@ namespace BarcodeScannerApp.Models.Readers
             var result = _reader.Decode((Bitmap)Image.FromFile(path));
             if(result != null)
             {
+                if (result.Text.Length > 10)
+                    return type + result.Text.Substring(0, 10);
                 return type + result.Text;
             }
             return type + "No barcode found";

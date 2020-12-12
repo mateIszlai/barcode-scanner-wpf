@@ -11,12 +11,17 @@ namespace BarcodeScannerApp.Models.Readers
                 RegistrationName = "demo",
                 RegistrationKey = "demo"
             };
-            var result = "ByteScout : ";
+            var type = "ByteScout : ";
             reader.BarcodeTypesToFind.All1D = true;
             reader.ReadFromFile(path);
             if (reader.FoundBarcodes.Length > 0)
-                return result + reader.FoundBarcodes[0].Value;
-            return result +  "No barcode found";
+            {
+                var number = reader.FoundBarcodes[0].Value;
+                if (number.Length > 10)
+                    return type + number.Substring(0, 10);
+                return type + number;
+            }
+            return type +  "No barcode found";
         }
     }
 }

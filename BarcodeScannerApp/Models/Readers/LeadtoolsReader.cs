@@ -14,7 +14,11 @@ namespace BarcodeScannerApp.Models.Readers
             var type = "Leadtools: ";
             var barcode = _engine.Reader.ReadBarcode(image, LeadRect.Empty, BarcodeSymbology.Unknown);
             if (barcode != null)
+            {
+                if (barcode.Value.Length > 10)
+                    return type + barcode.Value.Substring(0, 10);
                 return type + barcode;
+            }
             return type + "No barcode found";
         }
     }

@@ -21,7 +21,12 @@ namespace BarcodeScannerApp.Models.Readers
             reader.Settings.AutomaticRecognition = true;
             var results = reader.ReadBarcodes(path);
             if (results.Length > 0)
-                return type + results[0].Value;
+            {
+                var number = results[0].Value;
+                if (number.Length > 10)
+                    return type + number.Substring(0, 10);
+                return type + number;
+            }
             return type + "No barcode found";
         }
 
